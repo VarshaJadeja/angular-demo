@@ -1,0 +1,97 @@
+mat-toolbar{
+    position:fixed;
+    top:0;
+    z-index: 2;
+    background-color: #033c4a;
+    // background-color: mat-color($my-theme, 'primary', '800');
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+  mat-sidenav-container {
+    height: 100%;
+    // background-color: white;
+  }
+  
+  mat-sidenav-content {
+    margin-left: 250px; /* Adjusted for open state */
+    transition: margin-left 0.5s ease; /* Matches animation duration */
+    /* ... other styles */
+    
+    &.expanded {
+      margin-left: 60px; /* Adjusted for closed state */
+    }
+  }
+  h1{
+    color: white;
+    
+  }
+  .ng-trigger-openClose .mat-sidenav-content{
+    margin-left: 250px;
+  }
+  mat-sidenav {
+    background-color: #0f6980;
+    color: white;
+    width: 250px;
+    margin-top: 3.5rem;
+    border-radius: 0%;
+    transition: width 3s ease;
+    width: 250px;
+    @media screen and (min-width: 800px) {
+      .expanded {
+        width: 60px; 
+      }
+    }
+    @media screen and (min-width: 600px) {
+      margin-top: 3.5rem;
+    }
+    .entry{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: white;
+    }
+  
+  }
+  
+  .menuicon{
+    padding: 2px;
+  }
+  .mat-drawer{
+    width: inherit;
+  }
+  .show-dashboard {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  
+  mat-sidenav-content{
+    margin-left: 60px;
+    // color: #033c4a;
+    padding: 3.5rem;
+    &.expanded {
+      margin-left: 250px;
+    }
+    @media screen and (min-width: 600px) {
+        padding-top: 4rem;
+    }
+  }
+  .mat-mdc-menu-content, .mat-mdc-menu-item{
+    background-color: whitesmoke;
+    color: #0f6980;
+  }
+  ::ng-deep .mat-mdc-menu-panel{
+    background-color: whitesmoke  !important;
+  }
+  .pointer{
+    cursor: pointer;
+    color: white;
+  
+  }
+  .mat-mdc-menu-item {
+    &:hover {
+      background-color: #ccd7da !important;
+    }
+  }

@@ -1,0 +1,9 @@
+<mat-toolbar class="my">
+    <mat-icon class="menuicon pointer" (click)="onToggleSidebar()">menu</mat-icon>
+  <h1>Sidenavigation</h1>
+    <mat-icon class="pointer" [matMenuTriggerFor]="profileDropdown">settings</mat-icon>
+  <mat-menu #profileDropdown="matMenu">
+    <a mat-menu-item>Profile</a>
+    <a mat-menu-item>Account</a>
+  </mat-menu>
+  </mat-toolbar>
