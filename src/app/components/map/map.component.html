@@ -1,0 +1,11 @@
+<div class="map-container">
+    <div class="searchbar">
+        <input type="text" [(ngModel)]="address" placeholder="Enter an address" id="address-input" />
+        <button (click)="geocodeAddress(address)">Search</button>
+    </div>
+    
+    <div class="map-frame">
+      <div id="map"></div>
+    </div>
+  </div>
+  

@@ -4,9 +4,19 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { HeaderComponent } from '../header/header.component';
+import { HeaderComponent } from '@components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { AuthService } from '@services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { MapComponent } from '@components/map/map.component';
+import { DerivedComponent } from '@components/derived/derived.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,19 +32,52 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     MatToolbarModule,
     RouterLink,
     RouterLinkActive,
-    RouterOutlet
+    RouterOutlet,
+    MapComponent,
+    DerivedComponent
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
-export class SidebarComponent{
-  @Input() isMobile = true;
-  @Input() isCollapsed = true;
-
+export class SidebarComponent {
+  @Input() isMobile = false;
+  @Input() isCollapsed = false;
   @ViewChild(MatSidenav, { static: false })
   sidenav!: MatSidenav;
 
+  constructor(
+    private observer: BreakpointObserver,
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnInit() {
+    this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
+      if (screenSize.matches) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
+    });
+  }
   toggleMobileMenu() {
     this.sidenav.toggle();
+  }
+
+  toggleSidebar() {
+    if (this.isMobile) {
+      this.sidenav.toggle();
+    } else {
+      this.sidenav.open();
+      this.isCollapsed = !this.isCollapsed;
+    }
+  }
+  logout(): void {
+    this.authService.logout();
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('UserName');
+    this.toastr.info('Logout Successfully');
+    this.router.navigate(['/login']);
   }
 }

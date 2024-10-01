@@ -1,0 +1,66 @@
+<div class="chat-container">
+  <div class="user-list" [ngClass]="{ active: !selectedUserId }">
+    <h3>Users</h3>
+    <mat-list>
+      <mat-list-item
+        *ngFor="let user of userList"
+        class="user"
+        (click)="selectUser(user.id.toString())"
+        [ngClass]="{ 'active-user': selectedUserId === user.id.toString() }"
+      >
+        <span class="username">{{ user.firstName }}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <mat-card class="chat-card" [ngClass]="{ active: selectedUserId }">
+    <mat-card-header class="chat-header">
+      <mat-card-title class="chat-title">
+        <button
+          mat-icon-button
+          (click)="deselectUser()"
+          class="back-button"
+          [ngClass]="{ active: selectedUserId }"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        Chat with {{ selectedUser }}
+      </mat-card-title>
+    </mat-card-header>
+
+    <div class="chat-history" #chatHistory>
+      <ng-container *ngIf="!selectedUserId" class="welcome-message">
+        <p class="start-chat-message">Welcome to the chatbot!</p>
+      </ng-container>
+      <mat-card
+        *ngFor="let message of messages"
+        [ngClass]="{
+          'sender-message': message.senderId === senderid,
+          'receiver-message': message.senderId !== senderid
+        }"
+      >
+        <mat-card-content>
+          <p class="message-text">{{ message.message }}</p>
+          <p class="timestamp">{{ message.timestamp | date : "shortTime" }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-card-footer
+      class="chat-footer"
+      (keyup.enter)="sendMessage()"
+      *ngIf="selectedUserId"
+    >
+      <mat-form-field appearance="outline" class="message-input">
+        <textarea
+          matInput
+          [(ngModel)]="newMessage"
+          placeholder="Type a message"
+          rows="1"
+        ></textarea>
+      </mat-form-field>
+      <button mat-icon-button (click)="sendMessage()" class="send-icon">
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-card-footer>
+  </mat-card>
+</div>

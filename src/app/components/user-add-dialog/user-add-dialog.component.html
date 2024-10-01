@@ -1,0 +1,56 @@
+<h3 mat-dialog-title>Add New User</h3>
+<div mat-dialog-content class="add-content">
+  <form [formGroup]="userForm" (ngSubmit)="onSave()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        formControlName="firstName"
+        placeholder="Enter Firstname"
+      />
+      <mat-error *ngIf="userForm.get('firstName')?.hasError('required')">
+        First Name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" placeholder="Enter Lastname" />
+      <mat-error *ngIf="userForm.get('lastName')?.hasError('required')">
+        Last Name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="userForm.get('email')?.hasError('required')">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="userForm.get('email')?.hasError('email')">
+        Please enter a valid email.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>JobTitle</mat-label>
+      <input matInput formControlName="jobTitle" />
+      <mat-error *ngIf="userForm.get('jobTitle')?.hasError('required')">
+        JobTitle is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+      <mat-error *ngIf="userForm.get('title')?.hasError('required')">
+        Title is required.
+      </mat-error>
+    </mat-form-field>
+    
+    <div mat-dialog-actions class="actions">
+      <button mat-raised-button (click)="onCancel()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+  </form>
+</div>

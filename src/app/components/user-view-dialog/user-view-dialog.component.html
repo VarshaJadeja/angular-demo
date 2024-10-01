@@ -1,0 +1,31 @@
+<h3 mat-dialog-title>User Details</h3>
+<div mat-dialog-content class="dialog-content">
+  <div class="user-detail">
+    <p>
+      <strong>First Name: </strong> <span>{{ user.firstName }}</span>
+    </p>
+  </div>
+  <div class="user-detail">
+    <p>
+      <strong>Last Name: </strong> <span>{{ user.lastName }}</span>
+    </p>
+  </div>
+  <div class="user-detail">
+    <p>
+      <strong>Email: </strong> <span>{{ user.email }}</span>
+    </p>
+  </div>
+  <div class="user-detail">
+    <p>
+      <strong>Job Title: </strong> <span>{{ user.jobTitle }}</span>
+    </p>
+  </div>
+  <div class="user-detail">
+    <p>
+      <strong>Title: </strong> <span>{{ user.title }}</span>
+    </p>
+  </div>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-raised-button (click)="onClose()">Close</button>
+</div>

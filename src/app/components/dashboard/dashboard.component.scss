@@ -1,0 +1,43 @@
+/* Container for the file upload card */
+.file-upload-card {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Style for file input container */
+.file-input-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Style for the compress button container */
+.compress-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.file-size-info {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #555;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+ngx-mat-file-input {
+  width: 100%;
+}
+.url-shortener-card {
+  max-width: 600px;
+  margin: auto;
+  padding: 16px;
+  margin-top: 50px;
+}
+
+.shortened-url-info {
+  margin-top: 16px;
+}

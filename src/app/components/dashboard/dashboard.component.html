@@ -1,7 +1,57 @@
+<mat-card class="file-upload-card">
+  <mat-card-header>
+    <mat-card-title>File Upload and Compression</mat-card-title>
+  </mat-card-header>
+  <mat-card-content [formGroup]="myForm">
+    <!-- File Input -->
+    <input
+      formControlName="file"
+      id="file"
+      type="file"
+      class="form-control"
+      (change)="onFileChange($event)"
+    />
 
-<mat-form-field appearance="outline">
-    <ngx-mat-file-input 
-    >
-       <mat-icon ngxMatFileInputIcon>folder</mat-icon>
-    </ngx-mat-file-input>
- </mat-form-field>
+    <!-- Compress Button -->
+    <div class="compress-button-container">
+      <button mat-raised-button color="primary" (click)="onCompressClick()">
+        Compress Image
+      </button>
+    </div>
+
+    <!-- File Size Display -->
+    <div class="file-size-info">
+      <div *ngIf="originalFileSize !== null">
+        <p><strong>Original file size:</strong> {{ originalFileSize }} bytes</p>
+      </div>
+      <div *ngIf="compressedFileSize !== null">
+        <p>
+          <strong>Compressed file size:</strong> {{ compressedFileSize }} bytes
+        </p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="url-shortener-card">
+  <mat-card-header>
+    <mat-card-title>URL Shortener</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter URL</mat-label>
+      <input matInput [(ngModel)]="url" placeholder="Enter URL" />
+    </mat-form-field>
+    <div class="compress-button-container">
+      <button mat-raised-button color="primary" (click)="shortenUrl()">
+        Shorten URL
+      </button>
+    </div>
+    <div *ngIf="shortenedUrl" class="shortened-url-info">
+      <p>
+        <strong>Shortened URL:</strong>
+        <a [href]="shortenedUrl" target="_blank">{{ shortenedUrl }}</a>
+      </p>
+    </div>
+  </mat-card-content>
+</mat-card>

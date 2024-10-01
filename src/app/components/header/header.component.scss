@@ -1,21 +1,22 @@
 mat-toolbar {
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    background-color: #033c4a;
-    display: flex;
-    justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  background-color: #033c4a;
+  display: flex;
+  justify-content: space-between;
 }
 
 h1 {
-    color: white;
+  color: white;
 }
 
 .menuicon {
-    padding: 2px;
+  padding: 2px;
 }
 
 .pointer {
-    cursor: pointer;
-    color: white;
+  cursor: pointer;
+  color: white;
+  margin: 5px;
 }

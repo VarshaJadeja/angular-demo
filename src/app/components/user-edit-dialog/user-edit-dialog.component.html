@@ -1,0 +1,37 @@
+<h3 mat-dialog-title>Edit User</h3>
+<div mat-dialog-content>
+  <form class="edit-content">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="user.firstName" name="firstName" required />
+      <mat-error *ngIf="!user.firstName">First Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="user.lastName" name="lastName" required />
+      <mat-error *ngIf="!user.lastName">Last Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="user.email" name="email" required email />
+      <mat-error *ngIf="!user.email">Email is required</mat-error>
+      <mat-error *ngIf="user.email">Invalid email format</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>JobTitle</mat-label>
+      <input matInput [(ngModel)]="user.jobTitle" name="jobTitle" required />
+      <mat-error *ngIf="!user.jobTitle">JobTitle is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="user.title" name="title" required />
+      <mat-error *ngIf="!user.title">Title is required</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+</div>
