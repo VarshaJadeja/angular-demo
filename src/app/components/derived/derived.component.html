@@ -1,3 +1,50 @@
-<p>{{ getTitle() }}</p>
-<ng-container *ngComponentOutlet="getBioComponent()" />
-<button (click)="loadContent()">Load content</button>
+<div class="container">
+  <!-- Custom Attribute directive appHighlight -->
+  <h2 ngNonBindable appHighlight>Angular Features Demonstration</h2>
+
+  <!-- Inheritance Section -->
+  <section class="feature-section">
+    <h3>Inheritance</h3>
+    <p>{{ getTitle() }}</p>
+  </section>
+
+  <!-- Two Way Binding Section -->
+  <section class="feature-section">
+    <h3>Two-Way Binding</h3>
+    <label>Key Event:</label>
+    <input [(ngModel)]="myProperty" type="text" (keyup)="updateField($event)" />
+    <p>You typed: {{ myProperty | uppercase }}</p>
+  </section>
+
+  <!-- Component Outlet Section -->
+  <section class="feature-section">
+    <h3>Dynamic Component Loading</h3>
+    <ng-container *ngComponentOutlet="getBaseComponent()"></ng-container>
+    <button mat-button (click)="loadContent()">Load Content</button>
+    <ng-container #dynamicContainer></ng-container>
+  </section>
+
+  <!-- Template Fragment Section -->
+  <ng-template #myFragment let-pizzaTopping="topping">
+    <p>Rendering a template fragment: You selected: {{ pizzaTopping }}</p>
+  </ng-template>
+  <section class="feature-section">
+    <h3>Rendering Template Fragments</h3>
+
+    <label for="toppingInput">Enter Pizza Topping:</label>
+    <input
+      id="toppingInput"
+      [(ngModel)]="selectedTopping"
+      type="text"
+      placeholder="e.g., onion, pepperoni"
+    />
+    <ng-container
+      [ngTemplateOutlet]="myFragment"
+      [ngTemplateOutletContext]="{ topping: selectedTopping }"
+    >
+    </ng-container>
+  </section>
+  <section class="feature-section">
+    <app-user-list></app-user-list>
+  </section>
+</div>

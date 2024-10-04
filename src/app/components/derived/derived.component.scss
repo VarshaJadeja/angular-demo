@@ -1,0 +1,33 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  margin-bottom: 100px;
+}
+
+h2 {
+  text-align: center;
+  color: #4caf50;
+}
+
+.feature-section {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+label {
+  font-weight: bold;
+}
+
+button {
+  margin-top: 10px;
+}

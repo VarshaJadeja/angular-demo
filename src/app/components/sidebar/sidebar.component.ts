@@ -15,8 +15,6 @@ import {
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AuthService } from '@services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { MapComponent } from '@components/map/map.component';
-import { DerivedComponent } from '@components/derived/derived.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -33,8 +31,6 @@ import { DerivedComponent } from '@components/derived/derived.component';
     RouterLink,
     RouterLinkActive,
     RouterOutlet,
-    MapComponent,
-    DerivedComponent
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
@@ -44,6 +40,12 @@ export class SidebarComponent {
   @Input() isCollapsed = false;
   @ViewChild(MatSidenav, { static: false })
   sidenav!: MatSidenav;
+  menuStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+    color: 'white',
+  };
 
   constructor(
     private observer: BreakpointObserver,

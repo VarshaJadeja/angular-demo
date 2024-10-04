@@ -1,0 +1,9 @@
+<div class="user-list-container">
+    <h2>Virtual Scrolling</h2>
+    <!-- Virtual Scrolling for Usernames -->
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+      <div *cdkVirtualFor="let user of users.data">
+        {{ user.firstName }} <!-- Displaying the username -->
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>

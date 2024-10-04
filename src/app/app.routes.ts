@@ -7,6 +7,7 @@ import { AuthGuard } from '@guards/auth.guard';
 import { UserdetailComponent } from '@components/userdetail/userdetail.component';
 import { ChatComponent } from '@components/chat/chat.component';
 import { MapComponent } from '@components/map/map.component';
+import { DerivedComponent } from '@components/derived/derived.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -21,6 +22,7 @@ export const routes: Routes = [
       { path: 'userdetail', component: UserdetailComponent },
       { path: 'chat', component: ChatComponent },
       { path: 'map', component: MapComponent },
+      { path: 'doc', component: DerivedComponent },
     ],
   },
 ];

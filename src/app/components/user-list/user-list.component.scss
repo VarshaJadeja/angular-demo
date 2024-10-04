@@ -1,0 +1,11 @@
+.example-viewport {
+  height: 400px; /* Set height for the viewport */
+  width: 100%; /* Full width */
+  border: 1px solid #ccc; /* Optional styling */
+  overflow: auto; /* Enable scrolling */
+}
+
+div {
+  padding: 10px; /* Padding for each user */
+  border-bottom: 1px solid #eee; /* Optional divider */
+}

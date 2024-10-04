@@ -50,6 +50,7 @@ export class UserdetailComponent {
   ngOnInit(): void {
     this.fetchUsers();
   }
+
   private sortFieldMapping: { [key: string]: string } = {
     email: 'Email',
     firstName: 'FirstName',
@@ -57,13 +58,15 @@ export class UserdetailComponent {
     jobTitle: 'JobTitle',
     title: 'Title',
   };
+
   fetchUsers(): void {
+    console.log(this.sort);
     if (this.sort) {
       this.sortField =
         this.sortFieldMapping[this.sort.active] || this.sortField;
       this.isAscending = this.sort.direction === 'asc' ? true : false;
+      console.log('1 ', this.sortField);
     }
-    console.log(this.searchTerm);
     this.userService
       .fetchUsers(
         this.currentPage,
@@ -74,14 +77,19 @@ export class UserdetailComponent {
       )
       .subscribe(
         (data) => {
+          console.log(data);
           this.users.data = data.users;
           this.totalCount = data.totalCount;
           this.users.sort = this.sort;
+          console.log('sort', this.users.sort);
         },
         (error) => console.error('Error fetching user data', error)
       );
   }
+
   onPageChange(event: PageEvent): void {
+    this.sortField = '';
+    this.sort.disabled;
     this.currentPage = event.pageIndex + 1;
     this.pageSize = event.pageSize;
     this.fetchUsers();

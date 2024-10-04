@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { UrlShortenerService } from '@services/url-shortener.service';
+import { DerivedComponent } from '@components/derived/derived.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,10 +30,12 @@ import { UrlShortenerService } from '@services/url-shortener.service';
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
+    DerivedComponent
   ],
   providers: [UrlShortenerService],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class DashboardComponent {
   fileInputControl = new FormControl();
