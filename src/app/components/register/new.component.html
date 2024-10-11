@@ -1,0 +1,45 @@
+<div class="form-container" >
+    <mat-card class="form-card" #Template>
+        
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline">
+              <mat-label  [ngStyle]="formStyle">UserName</mat-label>
+              <input matInput formControlName="name" aria-placeholder="username" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label [ngStyle]="formStyle">Password</mat-label>
+              <input matInput formControlName="password" aria-placeholder="password" />
+            </mat-form-field>
+            <!-- Form Array -->
+            <div formArrayName="aliases" *ngIf="isShow">
+                <button mat-button (click)="addAlias()">Add alias</button>
+                <mat-form-field *ngFor="let alias of aliases.controls; let i=index" appearance="outline">
+                    <mat-label [ngStyle]="formStyle">Alias</mat-label>
+                    <input matInput [formControlName]="i" />
+                </mat-form-field>
+            </div>
+            <!-- Form Array -->
+            <button mat-raised-button [disabled]="!form.valid"><mat-icon>arrow_right_alt</mat-icon></button>
+        </form>
+
+        <!-- Built-in Pipe -->
+        <p #content>Pipe : {{ date | date:"MMM dd, yyyy 'at' hh:mm a" }}</p>
+        <!-- Custom Pipe -->
+        <p>Pipe : {{ test | reverse:'uppercase' }}</p>
+
+        <div [ngSwitch]="color">    
+            <div *ngSwitchCase="'red'">The color is red!</div>
+            <div *ngSwitchCase="'blue'">The color is blue!</div>
+            <div *ngSwitchCase="'green'">The color is green!</div>
+            <div *ngSwitchDefault>The color is Unknown!</div>
+        </div>
+        <div>
+            <button mat-button (click)="color = 'red'">Red</button>
+            <button mat-button (click)="color = 'blue'">Blue</button>
+            <button mat-button (click)="color = 'green'">Green</button>
+            <button mat-button (click)="color = ''">Unknown</button>
+        </div>
+        <app-base #selector name="Developer"><div>hii</div></app-base>
+    </mat-card>
+</div>
+

@@ -1,0 +1,17 @@
+<div class="container">
+  <mat-card class="form-container">
+    <form #tempform="ngForm" (ngSubmit)="OnSubmit(tempform)">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput  [(ngModel)]="user.name" name="name" aria-placeholder="UserName" required/>
+        <mat-error *ngIf="!user.name">Name is Required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput  [(ngModel)]="user.password" name="password" aria-placeholder="Password" required />
+        <mat-error *ngIf="!user.password">Password is Required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button>Submit</button>
+    </form>
+  </mat-card>
+</div>

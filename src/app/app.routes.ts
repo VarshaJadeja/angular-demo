@@ -8,11 +8,15 @@ import { UserdetailComponent } from '@components/userdetail/userdetail.component
 import { ChatComponent } from '@components/chat/chat.component';
 import { MapComponent } from '@components/map/map.component';
 import { DerivedComponent } from '@components/derived/derived.component';
+import { NewComponent } from '@components/register/new.component';
+import { TemplateDrivenFormComponent } from '@components/template-driven-form/template-driven-form.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'new', component: NewComponent},
+  {path: 'temp', component:TemplateDrivenFormComponent},
   {
     path: 'home',
     component: SidebarComponent,

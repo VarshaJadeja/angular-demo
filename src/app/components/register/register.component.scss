@@ -5,7 +5,17 @@
   height: 100vh;
   background-color: #fefefe;
 }
-
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fefefe;
+}
+.form-card{
+  padding: 30px;
+  width: 500px;
+}
 .register-container {
   max-width: 400px;
   width: 100%;

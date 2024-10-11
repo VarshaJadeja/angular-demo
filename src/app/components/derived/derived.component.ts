@@ -23,7 +23,7 @@ import { HighlightDirective } from 'app/directives/highlight.directive';
     NgTemplateOutlet,
     CommonModule,
     HighlightDirective,
-    UserListComponent
+    UserListComponent,
   ],
   templateUrl: './derived.component.html',
   styleUrl: './derived.component.scss',
