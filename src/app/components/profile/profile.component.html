@@ -1,0 +1,73 @@
+<h2>Users</h2>
+<div>
+  <button mat-flat-button (click)="OpenAddDialog()">Add User</button>
+  <div class="table-responsive">
+    <mat-table matSort (matSortChange)="SortChange($event)" [dataSource]="users" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let user; let i = index">{{ i + 1 }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{ user.firstName }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>LastName</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{ user.lastName }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="userName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>UserName</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{ user.userName }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="password">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Password</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{ user.password }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{ user.email }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <button mat-icon-button (click)="OpenEditDialog(user)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="OpenDeleteDialog(user)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row
+        *matHeaderRowDef="[
+          'id',
+          'firstName',
+          'lastName',
+          'userName',
+          'email',
+          'password',
+          'action'
+        ]"
+      ></mat-header-row>
+      <mat-row
+        *matRowDef="
+          let rows;
+          columns: [
+            'id',
+            'firstName',
+            'lastName',
+            'userName',
+            'email',
+            'password',
+            'action'
+          ]
+        "
+      ></mat-row>
+    </mat-table>
+  </div>
+  <mat-paginator
+    [length]="totalCount"
+    [pageSize]="pageSize"
+    (page)="OnPageChange($event)"
+  ></mat-paginator>
+</div>

@@ -1,0 +1,72 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.accountform {
+  width: 700px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-card-content,
+mat-card-title {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+  border: 3px solid #000;
+  border-radius: 50%;
+}
+
+.select-profile-picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.delete-button {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 250px;
+  right: 260px;
+  border-radius: 50%;
+  z-index: 1000;
+  cursor: pointer;
+  color: rgb(9, 9, 9);
+}
+
+mat-icon {
+  border-radius: 50%;
+  background-color: white;
+}
+.profile-image {
+  display: flex;
+  justify-content: center;
+}
+

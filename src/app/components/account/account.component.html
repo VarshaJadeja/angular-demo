@@ -1,0 +1,56 @@
+<div class="container">
+  <mat-card class="accountform">
+    <mat-card-title><h4>My Account</h4></mat-card-title>
+
+    <mat-card-content>
+      <form (ngSubmit)="OnSave()" >
+        <div class="profile-image">
+          <div class="image-container">
+            <label for="fileInput">
+              <img
+                [src]="
+                  url ? url : 'https://www.w3schools.com/howto/img_avatar.png'
+                "
+              />
+            </label>
+            <input
+              id="fileInput"
+              type="file"
+              name="url"
+              class="select-profile-picture"
+              (change)="onSelectFile($event)"
+            />
+          </div>
+          <div class="delete-button">
+            <mat-icon *ngIf="url" (click)="delete()">highlight_off</mat-icon>
+          </div>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>FirstName</mat-label>
+          <input matInput [(ngModel)]="user.firstName" name="firstName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>LastName</mat-label>
+          <input matInput [(ngModel)]="user.lastName" name="lastName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>UserName</mat-label>
+          <input matInput [(ngModel)]="user.userName" name="userName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="user.email" name="email" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput [(ngModel)]="user.password" name="password" />
+        </mat-form-field>
+        <div class="save-button">
+          <button mat-flat-button >Save</button>
+
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -28,8 +28,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { BaseComponent } from '@components/base/base.component';
+import { AuthService } from '@services/auth.service';
 import { ReversePipe } from 'app/pipe/reverse-pipe.pipe';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, tap } from 'rxjs';
 
 @Component({
   selector: 'app-newcomponent',
@@ -51,8 +52,8 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class NewComponent
   implements
-    OnChanges,
     OnInit,
+    OnChanges,
     OnDestroy,
     AfterContentInit,
     AfterContentChecked,
@@ -61,7 +62,7 @@ export class NewComponent
 {
   @ViewChild('Template', { static: false }) Template!: ElementRef;
   @ViewChild('content', { static: false }) content!: ElementRef;
- 
+
   mySubject = new Subject<number>();
   myBehaviourSubject = new BehaviorSubject(0);
   color: string = '';
@@ -69,8 +70,12 @@ export class NewComponent
   date: number = Date.now();
   isShow: boolean = true;
   form!: FormGroup;
-  
-  constructor(private fb: FormBuilder, private router: Router) {
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     afterRender(() => {
       const elem = this.content.nativeElement.innerHTML;
       console.log(`afterRender==>content: (${elem})`);
@@ -85,10 +90,10 @@ export class NewComponent
     this.test = 'ABCdef';
 
     this.form = this.fb.group({
-      name: ['', [Validators.required]],
+      userName: ['', [Validators.required]],
       password: ['', [Validators.required]],
       aliases: this.fb.array([this.fb.control('')]),
-    })
+    });
 
     // Subject
     this.mySubject.subscribe((value) => {
@@ -99,7 +104,7 @@ export class NewComponent
     this.mySubject.subscribe((value) => {
       console.log(`2 Received: ${value}`);
     });
-   
+
     this.mySubject.next(30);
     this.mySubject.next(20);
 
@@ -109,17 +114,17 @@ export class NewComponent
     });
     this.myBehaviourSubject.next(100);
     this.myBehaviourSubject.next(50);
-    
+
     this.myBehaviourSubject.subscribe((value) => {
       console.log(`B Received: ${value}`);
     });
     this.myBehaviourSubject.next(10);
 
-    console.log('ParentComponent==>ngOnInit works');
+    // console.log('ParentComponent==>ngOnInit works');
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('ngOnChanges',changes)
+    console.log('ngOnChanges', changes);
   }
 
   ngDoCheck() {
@@ -128,7 +133,7 @@ export class NewComponent
 
   ngAfterViewInit() {
     console.log('ParentComponent==>ngAfterViewInit');
-    console.log(this.content);
+    console.log(this.Template);
   }
 
   ngAfterViewChecked() {
@@ -160,13 +165,14 @@ export class NewComponent
     this.aliases.push(this.fb.control(''));
   }
 
-  onSubmit() {
-    const credentials = {
-      name: this.form.get('name')?.value,
-      password: this.form.get('password')?.value,
-      aliases: this.form.get('aliases')?.value,
-    };
+  onSubmit(): void {
     console.log(this.form.value);
     this.router.navigate(['/login']);
+  }
+  OnTrigger() {
+    console.log('Event triggered');
+  }
+  getBioComponent() {
+    return BaseComponent;
   }
 }

@@ -10,6 +10,8 @@ import { MapComponent } from '@components/map/map.component';
 import { DerivedComponent } from '@components/derived/derived.component';
 import { NewComponent } from '@components/register/new.component';
 import { TemplateDrivenFormComponent } from '@components/template-driven-form/template-driven-form.component';
+import { ProfileComponent } from '@components/profile/profile.component';
+import { AccountComponent } from '@components/account/account.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -27,6 +29,8 @@ export const routes: Routes = [
       { path: 'chat', component: ChatComponent },
       { path: 'map', component: MapComponent },
       { path: 'doc', component: DerivedComponent },
+      { path: 'profile', component:ProfileComponent},
+      { path: 'account', component:AccountComponent}
     ],
   },
 ];

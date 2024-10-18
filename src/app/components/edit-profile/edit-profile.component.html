@@ -1,0 +1,29 @@
+<h4 mat-dialog-title>Edit Profile</h4>
+<div mat-dialog-content>
+  <form class="edit-profile-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>FirstName</mat-label>
+      <input matInput [(ngModel)]="user.firstName" name="firstName" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>LastName</mat-label>
+      <input matInput [(ngModel)]="user.lastName" name="lastName" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>UserName</mat-label>
+      <input matInput [(ngModel)]="user.userName" name="userName" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="user.email" name="email" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput [(ngModel)]="user.password" name="password" />
+    </mat-form-field>
+    <div mat-dialog-actions class="actions">
+      <button mat-flat-button (click)="OnSave()">Save</button>
+      <button mat-flat-button (click)="OnCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

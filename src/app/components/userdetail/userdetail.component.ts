@@ -112,6 +112,7 @@ export class UserdetailComponent {
       }
     });
   }
+  
   openAddUserDialog(): void {
     const dialogRef = this.dialog.open(UserAddDialogComponent, {
       width: '500px',
@@ -124,6 +125,7 @@ export class UserdetailComponent {
       }
     });
   }
+
   openEditDialog(user: any): void {
     const dialogRef = this.dialog.open(UserEditDialogComponent, {
       width: '400px',

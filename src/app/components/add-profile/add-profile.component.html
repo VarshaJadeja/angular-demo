@@ -1,0 +1,54 @@
+<h4 mat-dialog-title>Add Profile</h4>
+<div mat-dialog-content>
+  <form
+    class="add-profile-form"
+    [formGroup]="addUserform"
+    (ngSubmit)="OnSave()"
+  >
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>FirstName</mat-label>
+      <input matInput formControlName="firstName" placeholder="FirstName" />
+      <mat-error *ngIf="addUserform.get('firstName')?.hasError('required')"
+        >First Name is required.</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>LastName</mat-label>
+      <input matInput formControlName="lastName" placeholder="lastName" />
+      <mat-error *ngIf="addUserform.get('lastName')?.hasError('required')"
+        >Last Name is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>UserName</mat-label>
+      <input matInput formControlName="userName" placeholder="UserName" />
+      <mat-error *ngIf="addUserform.get('userName')?.hasError('required')"
+        >User Name is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Email" />
+      <mat-error *ngIf="addUserform.get('email')?.hasError('required')"
+        >Email is required</mat-error
+      >
+      <mat-error *ngIf="addUserform.get('email')?.hasError('email')"
+        >Please enter valid email</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" placeholder="Password" />
+      <mat-error *ngIf="addUserform.get('password')?.hasError('required')"
+        >Password is required</mat-error
+      >
+      <mat-error *ngIf="addUserform.get('password')?.dirty">
+        Password should have at least 6 characters</mat-error
+      >
+    </mat-form-field>
+    <div mat-dialog-actions class="actions">
+      <button mat-flat-button type="button" (click)="OnCancel()">Cancel</button>
+      <button mat-flat-button type="submit">Save</button>
+    </div>
+  </form>
+</div>

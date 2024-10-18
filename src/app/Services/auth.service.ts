@@ -11,10 +11,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: any): Observable<any> {
+    console.log("login called")
     return this.http
       .post<any>(`${environment.baseUrl}/User/login`, credentials)
       .pipe(
         tap((response) => {
+          console.log(response);
           if (response) {
             this.isAuthenticated = true;
             localStorage.setItem('isAuthenticated', 'true');
