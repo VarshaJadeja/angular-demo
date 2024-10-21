@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment.development';
 })
 export class AuthService {
   private isAuthenticated = false;
+  private authSecretKey = 'Bearer Token';
   constructor(private http: HttpClient) {}
 
   login(credentials: any): Observable<any> {
@@ -22,6 +23,7 @@ export class AuthService {
             localStorage.setItem('isAuthenticated', 'true');
             localStorage.setItem('UserName', credentials.userName);
             localStorage.setItem('UserId', response.user.id);
+            localStorage.setItem(this.authSecretKey, response.token);
           }
         })
       );
@@ -29,6 +31,7 @@ export class AuthService {
   logout(): void {
     this.isAuthenticated = false;
     localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem(this.authSecretKey);
     localStorage.removeItem('UserName');
     localStorage.removeItem('UserId');
   }
