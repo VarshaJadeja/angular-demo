@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common';
 export class UserEditDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<UserEditDialogComponent>,
+    // parameter decorator @Inject
     @Inject(MAT_DIALOG_DATA) public user: any,
     private userDetailService: UserdetailService
   ) {}

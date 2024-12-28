@@ -1,4 +1,4 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
 import {
   AfterContentChecked,
   AfterContentInit,
@@ -31,6 +31,7 @@ import { BaseComponent } from '@components/base/base.component';
 import { AuthService } from '@services/auth.service';
 import { ReversePipe } from 'app/pipe/reverse-pipe.pipe';
 import { BehaviorSubject, Subject, tap } from 'rxjs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-newcomponent',
@@ -46,6 +47,8 @@ import { BehaviorSubject, Subject, tap } from 'rxjs';
     ReversePipe,
     DatePipe,
     BaseComponent,
+    NgOptimizedImage,
+    MatAutocompleteModule
   ],
   templateUrl: './new.component.html',
   styleUrl: './register.component.scss',
@@ -63,6 +66,7 @@ export class NewComponent
   @ViewChild('Template', { static: false }) Template!: ElementRef;
   @ViewChild('content', { static: false }) content!: ElementRef;
 
+  options: string[] = ['One', 'Two', 'Three'];
   mySubject = new Subject<number>();
   myBehaviourSubject = new BehaviorSubject(0);
   color: string = '';
@@ -92,14 +96,16 @@ export class NewComponent
     this.form = this.fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]],
+      options:[],
       aliases: this.fb.array([this.fb.control('')]),
     });
 
     // Subject
+    this.mySubject.next(10);
+
     this.mySubject.subscribe((value) => {
       console.log(`1 Received: ${value}`);
     });
-    this.mySubject.next(10);
 
     this.mySubject.subscribe((value) => {
       console.log(`2 Received: ${value}`);
@@ -112,9 +118,10 @@ export class NewComponent
     this.myBehaviourSubject.subscribe((value) => {
       console.log(`A Received: ${value}`);
     });
-    this.myBehaviourSubject.next(100);
-    this.myBehaviourSubject.next(50);
 
+    this.myBehaviourSubject.next(100);
+    this.myBehaviourSubject.next(50); 
+    
     this.myBehaviourSubject.subscribe((value) => {
       console.log(`B Received: ${value}`);
     });

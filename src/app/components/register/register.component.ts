@@ -50,6 +50,13 @@ export class RegisterComponent {
     this.registerForm.setValidators(passwordMatchValidator());
   }
 
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
+
   passwordMatchValidator(
     control: AbstractControl
   ): { [key: string]: boolean } | null {
@@ -63,14 +70,6 @@ export class RegisterComponent {
     }
     return null;
   }
-
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router,
-    private toastr: ToastrService
-  ) {}
-
   onSubmit(): void {
     const credentials = {
       firstName: this.registerForm.get('firstName')?.value,

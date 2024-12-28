@@ -12,12 +12,26 @@
             </mat-form-field>
             <!-- Form Array -->
             <div formArrayName="aliases" *ngIf="isShow">
-                <button mat-button (click)="addAlias()">Add alias</button>
+                <button mat-button type="button" (click)="addAlias()">Add alias</button>
                 <mat-form-field *ngFor="let alias of aliases.controls; let i=index" appearance="outline">
                     <mat-label [ngStyle]="formStyle">Alias</mat-label>
                     <input matInput [formControlName]="i" />
                 </mat-form-field>
             </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Number</mat-label>
+              <input type="text"
+                     placeholder="Pick one"
+                     aria-label="Number"
+                     matInput
+                     formControlName="options"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                @for (option of options; track option) {
+                  <mat-option [value]="option">{{option}}</mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
             <!-- Form Array -->
             <button mat-raised-button [disabled]="!form.valid"><mat-icon>arrow_right_alt</mat-icon></button>
         </form>
@@ -40,9 +54,29 @@
             <button mat-button (click)="color = 'green'">Green</button>
             <button mat-button (click)="color = ''">Unknown</button>
         </div>
+        <!-- <img [src]="'https://www.w3schools.com/howto/img_avatar.png'" /> -->
+        <!-- <img src="assets/burger_01.jpg" width="300" height="200"/> -->
+
+        <!-- <img [ngSrc]="'assets/burger_01.jpg?crop=circle'" width="300" height="200" placeholder="data" loading=lazy> -->
+        
+
         <!-- child-component -->
-        <app-base #selector name="Developer" (newEvent)="OnTrigger()"><div>hii</div></app-base>
+        <app-base #selector name="Developer" (newEvent)="OnTrigger()"><div>hii(content projection)</div></app-base>
         <!-- <ng-container *ngComponentOutlet="getBioComponent()" /> -->
+        <div>
+            @defer (on viewport) {
+            <ul>
+            <li>Building for the web is fantastic!</li>
+            <li>The new template syntax is great</li>
+            <li>I agree with the other comments!</li>
+          </ul>
+            } @placeholder {
+            <p>Future comments</p>
+            } @loading (minimum 3s) {
+            <p>Loading comments...</p>
+            }
+          </div>
     </mat-card>
+   
 </div>
 

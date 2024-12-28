@@ -51,7 +51,7 @@ export class SidebarComponent {
     private observer: BreakpointObserver,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit() {

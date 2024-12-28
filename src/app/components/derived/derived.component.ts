@@ -39,7 +39,7 @@ export class DerivedComponent extends BaseComponent {
   }
 
   override getTitle() {
-    return `${super.getTitle()} - ${this.title1}`; // Use base method
+    return `${super.getTitle()} - ${this.title1 }`; // Use base method
   }
   loadContent() {
     this.dynamicContainer.clear();
